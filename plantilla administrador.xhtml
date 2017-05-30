@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/default.css"/>
+        <h:outputStylesheet name="/css/cssLayout.css"/>
+
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top"></ui:insert>
+            <div id="menuBar">
+                <h:form>    
+                    <h:panelGrid columns="10" cellpadding="5">
+                        <p:inputText id="name"  value="#{basicView.text}" />
+                        <p:commandButton value="Buscar" update="display"  />
+                        <h:outputText id="display" value="#{basicView.text}" />
+
+                    </h:panelGrid>
+                </h:form>
+            </div>
+            <div id="faq">
+                <h:form>
+                    <p:growl id="growl" life="50" />
+                    <p:commandButton  value="FAQ" id="faq" update="growl" actionListener="#{buttonView.buttonAction}" styleClass="ui-priority-primary" />
+                </h:form>
+            </div>
+            <div id="cuenta">
+                <h:form>
+                    <p:growl id="growl" life="50" />
+                    <p:commandButton value="Cuenta" id="cuenta" update="growl" actionListener="#{buttonView.buttonAction}" styleClass="ui-priority-primary" />
+                </h:form>
+            </div>
+            <div id="logo">
+                <h:form>
+                    <p:graphicImage name="Imagenes/IBlogo.jpg" />
+                </h:form>
+            </div>
+        </div>
+        
+        <div>
+            <div id="content" class="left_content">
+                <h:form>  
+                    <p:growl id="menuinicio"/>
+
+                    <p:menubar>
+                        <p:submenu label="Inicio" icon="ui-icon-document">
+                            <p:submenu label="Registro" icon="ui-icon-contact">
+                                <p:menuitem value="Persona Natural" url="#" />
+                                <p:menuitem value="Persona Juridica" url="#" />
+                            </p:submenu>
+                            <p:menuitem value="Salir" url="#" />
+                        </p:submenu>
+                    </p:menubar>
+                    <p:layout style="min-width:400px;min-height:200px;">
+                        <p:layoutUnit position="center">
+
+                        </p:layoutUnit>
+                    </p:layout>    
+                </h:form>
+            </div>
+        </div>
+        
+        
+        
+        <div>
+            <div id="menuLateral">
+            <h:form>
+                    <p:growl autoUpdate="true"/>
+                <p:panelMenu style="width:220px">
+                        <p:submenu label="Actividades">
+                        </p:submenu>
+                        <p:submenu label="Busqueda">
+                            <p:menuitem value="Empresa" actionListener="#{menuView.save}" icon="ui-icon-disk" />
+                            <p:menuitem value="Acciones" actionListener="#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" />
+                        </p:submenu>
+                        <p:submenu label="Fluctuacion Bolsa">
+                            <p:menuitem value="Cambio Fecha" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
+                        </p:submenu>
+                        <p:separator />
+                        <p:submenu label="Historial Cambio Capital" >
+                            <p:menuitem value="Ver Historial" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
+                        </p:submenu>
+
+                    </p:panelMenu>
+                </h:form>
+            </div>
+        </div>
+        
+        
+
+        <div id="bottom">
+            <ui:insert name="bottom">Bottom</ui:insert>
+        </div>
+
+    </h:body>
+
+</html>
